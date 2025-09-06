@@ -3,6 +3,10 @@ import os
 from dotenv import load_dotenv
 import requests
 
+BASE_URL = "http://api.weatherapi.com/v1/current.json"
+DEFAULT_CITY = "Paris"
+AQI_PARAM = "no"
+
 
 def get_weather() -> None:
     load_dotenv()
@@ -10,12 +14,8 @@ def get_weather() -> None:
     if not api_key:
         raise ValueError("API_KEY environment variable not set")
 
-    city = "Paris"
-    url = (
-        f"http://api.weatherapi.com/v1/current.json?q={city}"  # noqa: E231
-        f"&key={api_key}"
-        f"&aqi=no"
-    )
+    city = DEFAULT_CITY
+    url = f"{BASE_URL}?q={city}" f"&key={api_key}" f"&aqi={AQI_PARAM}"
 
     response = requests.get(url)
     response.raise_for_status()
