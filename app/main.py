@@ -12,7 +12,7 @@ def get_weather() -> None:
 
     city = "Paris"
     url = (
-        f"http://api.weatherapi.com/v1/current.json?q={city}"
+        f"http://api.weatherapi.com/v1/current.json?q={city}"  # noqa: E231
         f"&key={api_key}"
         f"&aqi=no"
     )
